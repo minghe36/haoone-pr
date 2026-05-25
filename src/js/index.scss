@@ -1,0 +1,300 @@
+@use "./variables.scss" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.app {
+  min-height: 100vh;
+  background-color: #282c34;
+}
+
+.haoone-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+// 标题栏
+.haoone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  min-height: 30px;
+
+  .plugin-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: $font;
+  }
+
+  .help-btn {
+    background: transparent;
+    border: none;
+    color: #0066cc;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 4px 8px;
+
+    &:hover {
+      color: #0052a3;
+    }
+  }
+}
+
+// 提示信息
+.notice-box {
+  color: #ff9800;
+  padding: 8px;
+  background-color: rgba(255, 152, 0, 0.1);
+  border: 1px solid #ff9800;
+  border-radius: 3px;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+// 表单行
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  min-height: 30px;
+
+  .form-label {
+    min-width: 120px;
+    font-size: 14px;
+    color: $font;
+    text-align: right;
+    margin-right: 8px;
+
+    &.model-label {
+      min-width: 100px;
+      margin-left: 16px;
+    }
+
+    &.max-length-label {
+      min-width: 110px;
+      margin-left: 12px;
+    }
+  }
+
+  &.srt-path-row {
+    margin-top: 8px;
+    flex-wrap: wrap;
+
+    .form-label {
+      min-width: 60px;
+    }
+
+    .srt-path-display {
+      flex: 1;
+      padding: 4px 8px;
+      font-size: 12px;
+      color: $font;
+      word-break: break-all;
+      min-width: 200px;
+
+      &:empty::before {
+        content: "自动生成后显示路径";
+        color: $highlight;
+      }
+    }
+
+    .btn-small {
+      padding: 4px 12px;
+      font-size: 12px;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      background-color: #7287fd;
+      margin-left: 8px;
+      transition: background-color 0.2s;
+
+      &:hover:not(:disabled) {
+        background-color: #7e91f8;
+      }
+
+      &:disabled {
+        background-color: #555;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+    }
+  }
+}
+
+// 复选框
+.checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+// 下拉框
+.select {
+  padding: 4px 8px;
+  font-size: 14px;
+  border: 1px solid #666666;
+  border-radius: 3px;
+  background-color: $dark;
+  color: $font;
+  min-width: 120px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: $active;
+  }
+
+  option {
+    background-color: $darker;
+    color: $font;
+  }
+}
+
+// 输入框
+.input-small {
+  width: 60px;
+  padding: 4px 8px;
+  font-size: 14px;
+  border: 1px solid #666666;
+  border-radius: 3px;
+  background-color: $dark;
+  color: $font;
+  text-align: center;
+
+  &:focus {
+    outline: none;
+    border-color: $active;
+  }
+}
+
+.input-path {
+  flex: 1;
+  padding: 4px 8px;
+  font-size: 14px;
+  border: 1px solid #666666;
+  border-radius: 3px;
+  background-color: $dark;
+  color: $font;
+
+  &::placeholder {
+    color: $highlight;
+  }
+}
+
+// 状态显示
+.status-box {
+  text-align: center;
+  font-size: 16px;
+  color: #ff9800;
+  padding: 12px;
+  margin: 16px 0;
+}
+
+// 按钮组
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 12px 0;
+
+  .btn {
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    min-width: 100px;
+    transition: background-color 0.2s;
+    font-weight: bold;
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &.btn-primary {
+      background-color:  #8839ef; 
+
+      &:hover {
+        background-color: #8e5ece;
+      }
+
+      &:active {
+        background-color: #8e5ece;
+      }
+    }
+
+    &.btn-warning {
+      background-color: #e67e22;
+
+      &:hover {
+        background-color: #d35400;
+      }
+
+      &:active {
+        background-color: #ba4a00;
+      }
+    }
+
+    &.btn-info {
+      background-color: #7287fd;
+
+      &:hover {
+        background-color: #7e91f8;
+      }
+
+      &:active {
+        background-color: #7e91f8;
+      }
+    }
+  }
+
+  .sync-hint {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #fff;
+    padding: 0 4px;
+  }
+}
+
+// 滚动条
+::-webkit-scrollbar {
+  width: 10px;
+  -webkit-appearance: always;
+}
+
+::-webkit-scrollbar-track {
+  background: $darkest;
+  padding: 2.25em 1.6875em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $darker;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $dark;
+}
